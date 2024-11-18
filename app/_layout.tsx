@@ -13,7 +13,11 @@ export default function RootLayout() {
       />
       <Stack.Screen
         name="cocktails/index"
-        options={{ title: "Compteur", headerShown: false }}
+        options={{ title: "liste des cocktails", headerShown: false }}
+      />
+      <Stack.Screen
+        name="cocktails/[id]"
+        options={{ title: "Details d'un cocktail", headerShown: false }}
       />
     </Stack>
   );

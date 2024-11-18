@@ -1,8 +1,11 @@
-import { useRouter } from "expo-router";
-import { StyleSheet, Text, View, FlatList, Button } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { Text, View } from "react-native";
 
-export default function CocktailsScreen() {
-  const router = useRouter();
+export default function CocktailDetailsScreen() {
+  //je récupère l'id envoyé par l'utilisateur depuis la page de liste
+  // (quand il clique sur un cocktail, je lui envoie l'id du cocktail)
+  const { id } = useLocalSearchParams();
+
   const cocktailsList = [
     {
       id: 1,
@@ -81,47 +84,18 @@ export default function CocktailsScreen() {
       description: "Un cocktail exotique aux saveurs des îles.",
     },
   ];
+  // dans la liste des cocktails, je filtre pour récupérer
+  // le cocktail correspondant à l'id envoyé par l'utilisateur
+  const cocktail = cocktailsList.find(
+    (cocktail) => cocktail.id === parseInt(id)
+  );
 
-  const handleNavigateToDetails = (cocktailId: Number) => {
-    router.push("cocktails/" + cocktailId);
-  };
   return (
-    <View style={styles.container}>
-      <Text style={styles.h1}>Liste des cocktails</Text>
-
-      <FlatList
-        data={cocktailsList}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{item.title}</Text>
-            <Button
-              title="voir le cocktail"
-              onPress={() => handleNavigateToDetails(item.id)}
-            />
-          </View>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
+    <View>
+      <Text>Details du cocktail {id}</Text>
+      <Text>{cocktail.title}</Text>
+      <Text>{cocktail.ingredients}</Text>
+      <Text>{cocktail.description}</Text>
     </View>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    margin: 20,
-    gap: 20,
-  },
-  h1: {
-    fontSize: 30,
-    fontWeight: 600,
-    textAlign: "center",
-  },
-  h2: {
-    fontSize: 15,
-    fontWeight: 600,
-  },
-  content: {
-    display: "flex",
-  },
-});
