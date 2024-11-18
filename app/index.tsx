@@ -8,7 +8,7 @@ export default function IndexScreen() {
     router.push("counter");
   };
   const handlePressCocktails = () => {
-    router.push("cocktailsList");
+    router.push("cocktails");
   };
   return (
     <View style={styles.containerMain}>

@@ -12,7 +12,7 @@ export default function RootLayout() {
         options={{ title: "Compteur", headerShown: false }}
       />
       <Stack.Screen
-        name="cocktailsList"
+        name="cocktails/index"
         options={{ title: "Compteur", headerShown: false }}
       />
     </Stack>
