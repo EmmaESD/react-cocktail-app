@@ -4,8 +4,11 @@ import { Button, Image, StyleSheet, Text, View } from "react-native";
 export default function IndexScreen() {
   const router = useRouter();
 
-  const handlePress = () => {
+  const handlePressCounter = () => {
     router.push("counter");
+  };
+  const handlePressCocktails = () => {
+    router.push("cocktailsList");
   };
   return (
     <View style={styles.containerMain}>
@@ -15,8 +18,11 @@ export default function IndexScreen() {
           <Text style={styles.h2}>
             Bienvenue dans l'application dédiée aux cocktails !
           </Text>
-          <Button title="Voir tous les cocktails" />
-          <Button title="compteur de cocktails" onPress={handlePress} />
+          <Button
+            title="Voir tous les cocktails"
+            onPress={handlePressCocktails}
+          />
+          <Button title="compteur de cocktails" onPress={handlePressCounter} />
         </View>
         <View>
           <Text style={styles.h2}>Qu'est-ce qu'un cocktails ?</Text>

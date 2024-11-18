@@ -11,6 +11,10 @@ export default function RootLayout() {
         name="counter/index"
         options={{ title: "Compteur", headerShown: false }}
       />
+      <Stack.Screen
+        name="cocktailsList"
+        options={{ title: "Compteur", headerShown: false }}
+      />
     </Stack>
   );
 }
